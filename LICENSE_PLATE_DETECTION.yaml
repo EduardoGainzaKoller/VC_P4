@@ -1,0 +1,14 @@
+# 1. Ruta BASE al dataset
+path: LICENS_PLATE_DETECTION
+
+# 2. Rutas a los directorios de IMAGENES (relativas a 'path')
+train: images/train
+val: images/val
+test: images/test
+
+# 3. Número de Clases
+nc: 1
+
+# 4. Nombres de las Clases
+# La lista de nombres debe empezar por el índice 0 (cero) y coincidir con tu anotación.
+names: ['matricula']
