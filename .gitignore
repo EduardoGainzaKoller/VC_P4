@@ -1,0 +1,19 @@
+# Ignorar carpetas relacionadas con entrenamiento
+plate_crops/
+runs/
+LICENS_PLATE_DETECTION/
+
+# Ignorar archivos grandes o generados automáticamente
+*.pt
+*.mp4
+*.jpg
+*.png
+*.jpeg
+
+# Ignorar notebooks temporales o salidas
+*.ipynb_checkpoints/
+
+# Ignorar configuraciones locales
+.vscode/
+__pycache__/
+*.pyc
