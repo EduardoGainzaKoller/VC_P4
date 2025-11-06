@@ -129,4 +129,39 @@ El flujo de trabajo se basa en una serie de **transformaciones clásicas de proc
   4. **Binarización adaptativa u Otsu**, que resalta los contornos del texto sobre el fondo.  
   5. **Aplicación del motor OCR de Tesseract**, configurado para priorizar caracteres alfanuméricos.
 
-Para probar el rendimiento de ambos métodos se proceso el dataset presente en el proyecto llamado [OCR Detection](./OCR%20Detection/)
+Para probar el rendimiento de ambos métodos se proceso el dataset presente en el proyecto llamado [OCR Detection](./OCR%20Detection/). Este dataset se compone de 100 imagenes de prueba con sus respectivos .json para confirmar la predicción de los métodos ya mencionados. El flujo de ejecución es el siguiente:
+
+  1. Se extraen las imágenes del dataset
+  2. Se Utiliza el modelo entrenado para detectar la matrícula
+  3. Se pasa la región de interés a los métodos y estos devuelven el resultado
+
+
+## Resultados y análisis
+Los métodos comentados en el apartado anterior dan como resultado una serie de csv con los datos de las predicciones ([resultados_smol.csv](./resultados_smol.csv) y [resultados_tesseract.csv](./resultados_tesseract.csv)).
+Se resaltan los siguientes puntos:
+
+El modelo SmolVLM logra una mayor precisión en el reconocimiento de caracteres, incluso en condiciones de iluminación desfavorable o con matrículas parcialmente deterioradas.
+
+Por otro lado, Tesseract (OCR clásico) presenta limitaciones significativas ante distorsiones, reflejos o variaciones en el ángulo de visión, reduciendo la tasa de aciertos en casos no ideales.
+
+El tiempo de inferencia de SmolVLM es superior, ya que implica una red neuronal más compleja, mientras que Tesseract ofrece una ejecución más rápida y ligera. El modelo de SmolLVM tardó aproximádamente 45 minutos en ejecutarse (en cpu) mientras que tesseract tardo apenas 2 minutos.
+
+<img width="540" height="374" alt="image" src="https://github.com/user-attachments/assets/e869b092-e22c-428b-bb2a-01e56f3e1251" />
+
+Podemos extraer como conclusión que el modelo LVM es mucho más robusto y preciso, pero como consecuencia encontramos largos tiempos de ejecución y consumición de recursos. Por otro lado tesseract es muy susceptible a cambios de iluminación, ángulos, colores, etc, pero sus tiempos de ejecución son mucho menores.
+
+## Autoría
+Este trabajo ha sido realizado por Eduardo Gainza Koller.
+
+## Fuentes y referencias
+
+Durante el desarrollo de la práctica se consultaron o utilizaron las siguientes fuentes:
+
+- Consultas realizadas a [ChatGPT](https://chatgpt.com/) sobre:
+  - Datasets útiles para el desempeño del trabajo
+  - Técnicas de detección de matrículas mediante análisis de contornos
+  - Diseño de prompts efectivos para modelos de visión-lenguaje en tareas de OCR
+  - Instalación y compatibilidad de dependencias
+  - Cómo mantener el mejor resultado de OCR cuando un vehículo aparece en múltiples frames
+- Artículo sobre SmolVLM en Hugging Face: [https://huggingface.co/spaces/ashkamath/smol-vlm](https://huggingface.co/spaces/ashkamath/smol-vlm)
+- Matplotlib para generación de gráficas: [https://matplotlib.org/stable/contents.html](https://matplotlib.org/stable/contents.html)
