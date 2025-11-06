@@ -129,4 +129,4 @@ El flujo de trabajo se basa en una serie de **transformaciones clásicas de proc
   4. **Binarización adaptativa u Otsu**, que resalta los contornos del texto sobre el fondo.  
   5. **Aplicación del motor OCR de Tesseract**, configurado para priorizar caracteres alfanuméricos.
 
-Para probar el rendimiento de ambos métodos se proceso el dataset presente en el proyecto llamado [OCR Detection/](./OCR Detection)
+Para probar el rendimiento de ambos métodos se proceso el dataset presente en el proyecto llamado [OCR Detection](./OCR%20Detection/)
