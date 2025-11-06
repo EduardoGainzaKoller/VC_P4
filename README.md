@@ -49,3 +49,11 @@ results = non_trained_model.train(
     device=0                            # Usar GPU 0 para el entrenamiento
 )
 ```
+
+Para entrenar el modelo se utilizo un dataset obtenido de kaggle llamado ["License Plate Detection Dataset"](https://www.kaggle.com/datasets/fareselmenshawii/license-plate-dataset). Este dataset proporciona hasta diez mil imágenes de entrenamiento lo que favorece a la precisión del modelo. Sin embargo, por limitaciones técnicas se tuvo que utilizar el modelo nano de YOLO que reduce significativamente el rendimiento en la detección.
+
+
+## Combinación de modelos y detección conjunta
+Unza vez entrenado el modelo para la detección de matriculas se utilizo la combinación de este y el modelo predefinido de YOLO para detectar el conjutno de interés en el video de test porporcionado en el moddle de la asignatura. La idea se basa en tratar frame a frame con ambos modelos y si se detecta un objeto de las clases de interés envolverlo con una caja y mostrar la confianza de la predicción. Se muestra a continuación una imagen de ejemplo:
+
+<img width="1093" height="443" alt="image" src="https://github.com/user-attachments/assets/52f4ba8d-72c1-4459-bd33-2c8cc3c33e98" />
