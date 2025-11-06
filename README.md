@@ -95,3 +95,4 @@ Aunque el método de detección mediante contornos es una alternativa válida y 
      - Los contornos pueden confundir faros, rejillas o reflejos con una matrícula, generando **detecciones erróneas**.  
      - Los modelos de detección profunda, en cambio, aprenden a **distinguir patrones específicos**, minimizando estos errores.
 
+Como detalle se añadio a ambas formas de detección un difuminado para las personas y matrículas para mantener la privacidad.
