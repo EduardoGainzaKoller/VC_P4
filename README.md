@@ -96,3 +96,37 @@ Aunque el método de detección mediante contornos es una alternativa válida y 
      - Los modelos de detección profunda, en cambio, aprenden a **distinguir patrones específicos**, minimizando estos errores.
 
 Como detalle se añadio a ambas formas de detección un difuminado para las personas y matrículas para mantener la privacidad.
+
+## Detección de texto mediante OCR
+Una vez localizadas las matrículas, el siguiente paso consiste en **extraer el texto alfanumérico** que contienen.  
+En este cuaderno se implementan **dos estrategias diferentes** para la detección y lectura del texto:
+
+  1. Una solución moderna basada en **SmolVLM**, un modelo multimodal de visión y lenguaje.  
+  2. Un enfoque clásico mediante **OCR tradicional con Tesseract**.
+
+---
+
+### Detección mediante SmolVLM (modelo multimodal)
+
+SmolVLM es un modelo **multimodal** capaz de interpretar imágenes y texto de forma conjunta.  
+En este caso, se utiliza para **describir o leer el contenido visual** de las matrículas detectadas.  
+El modelo no requiere entrenamiento adicional: basta con enviarle una imagen recortada (la matrícula) y una instrucción textual.
+
+### Detección mediante Tesseract (OCR Clásico)
+
+En este caso se utiliza **Tesseract**, un motor OCR de código abierto desarrollado por Google, ampliamente utilizado en tareas de reconocimiento óptico de texto.  
+A diferencia de SmolVLM, este método no realiza una interpretación semántica del contenido visual, sino que se centra exclusivamente en **detectar patrones de caracteres** dentro de una imagen binarizada.
+
+El flujo de trabajo se basa en una serie de **transformaciones clásicas de procesamiento de imagen** antes de aplicar el OCR, con el objetivo de mejorar la legibilidad de los caracteres y reducir el ruido.
+
+---
+
+#### Proceso de detección paso a paso
+
+  1. **Recorte de la matrícula** a partir del frame detectado por YOLO.  
+  2. **Conversión a escala de grises** para simplificar la información visual.  
+  3. **Suavizado mediante filtro Gaussiano** para eliminar pequeñas imperfecciones.  
+  4. **Binarización adaptativa u Otsu**, que resalta los contornos del texto sobre el fondo.  
+  5. **Aplicación del motor OCR de Tesseract**, configurado para priorizar caracteres alfanuméricos.
+
+Para probar el rendimiento de ambos métodos se proceso el dataset presente en el proyecto llamado [OCR Detection/](./OCR Detection)
